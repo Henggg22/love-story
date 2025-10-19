@@ -241,10 +241,18 @@
             margin-bottom: 15px;
         }
 
+        
         /* Love Clock Section */
         .love-clock {
             background: linear-gradient(135deg, var(--deep-purple) 0%, var(--dark-bg) 100%);
             text-align: center;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 60px;
+            text-shadow: var(--glow);
         }
 
         .clock-container {
@@ -300,6 +308,164 @@
                 box-shadow: 0 0 10px rgba(157, 126, 255, 0.5);
             }
         }
+
+        /* Couple Profile Section */
+        .couple-profile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 70px;
+            margin: 60px 0;
+            flex-wrap: wrap;
+        }
+
+        .partner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 300px;
+        }
+
+        .partner-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--light-purple);
+            box-shadow: 0 0 20px var(--pink);
+            transition: all 0.5s ease;
+            animation: floatPartner 4s ease-in-out infinite;
+        }
+
+        .partner-1 .partner-image {
+            animation-delay: 0s;
+        }
+
+        .partner-2 .partner-image {
+            animation-delay: 0.5s;
+        }
+
+        .partner-name {
+            font-size: 1.8rem;
+            margin-top: 20px;
+            color: var(--soft-pink);
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(255, 107, 157, 0.5);
+        }
+
+        .love-symbol {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+
+        .love-icon {
+            font-size: 4rem;
+            color: var(--pink);
+            text-shadow: 0 0 20px var(--pink);
+            margin-bottom: 10px;
+        }
+
+        .love-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: var(--soft-pink);
+            text-shadow: 0 0 15px var(--pink);
+        }
+
+        @keyframes floatPartner {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+                box-shadow: 0 0 20px var(--pink);
+            }
+            50% {
+                transform: translateY(-15px) scale(1.05);
+                box-shadow: 0 0 30px var(--pink), 0 0 40px var(--light-purple);
+            }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            10% {
+                transform: scale(1.1);
+            }
+            20% {
+                transform: scale(1);
+            }
+            30% {
+                transform: scale(1.15);
+            }
+            40% {
+                transform: scale(1);
+            }
+        }
+
+        /* Floating Elements */
+        .floating {
+            position: absolute;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .heart {
+            color: var(--pink);
+            font-size: 20px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .balloon {
+            width: 40px;
+            height: 50px;
+            border-radius: 50%;
+            position: relative;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 15px;
+            background-color: white;
+        }
+
+        .flower {
+            font-size: 24px;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .confetti {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .snowflake {
+            font-size: 18px;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+
+        
 
          /* Gift Section */
         .gift-section {
@@ -687,6 +853,32 @@
             .options {
                 grid-template-columns: 1fr;
             }
+            .couple-profile {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .love-symbol {
+                order: -1;
+                margin-bottom: 20px;
+            }
+            
+            .partner-image {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .love-icon {
+                font-size: 3rem;
+            }
+            
+            .love-text {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
@@ -696,7 +888,7 @@
         <div class="container">
             <h1 class="cursive scroll-hidden">Our Love Story ❤️</h1>
             <p class="scroll-hidden">Celebrating one year of laughter, adventures, and endless love</p>
-            <button id="music-toggle" class="scroll-hidden" style="background: var(--purple); color: white; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer; font-size: 1rem; margin-top: 20px;">Pause Music</button>
+            <button id="music-toggle" class="scroll-hidden" style="background: var(--purple); color: white; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer; font-size: 1rem; margin-top: 20px;">🎵 Pause Music</button>
         </div>
         
         <!-- Floating Elements -->
@@ -704,12 +896,12 @@
         <div class="floating heart" style="top: 25%; left: 70%;">💖</div>
         <div class="floating heart" style="top: 60%; left: 10%;">💖</div>
         <div class="floating heart" style="top: 75%; left: 80%;">💖</div>
-        <!-- <div class="floating balloon" style="top: 10%; left: 5%; background: var(--pink);"></div>
-        <div class="floating balloon" style="top: 40%; left: 90%; background: var(--light-purple);"></div> -->
+        <div class="floating balloon" style="top: 10%; left: 5%; background: var(--pink);"></div>
+        <div class="floating balloon" style="top: 40%; left: 90%; background: var(--light-purple);"></div>
         <div class="floating flower" style="top: 30%; left: 40%;">🌸</div>
         <div class="floating flower" style="top: 70%; left: 60%;">🌺</div>
-        <!-- <div class="floating confetti" style="top: 20%; left: 50%; background: var(--soft-pink);"></div>
-        <div class="floating confetti" style="top: 50%; left: 30%; background: var(--light-purple);"></div> -->
+        <div class="floating confetti" style="top: 20%; left: 50%; background: var(--soft-pink);"></div>
+        <div class="floating confetti" style="top: 50%; left: 30%; background: var(--light-purple);"></div>
         <div class="floating snowflake" style="top: 80%; left: 40%;">❄️</div>
     </section>
 
@@ -834,37 +1026,61 @@
     </section>
 
     <!-- Love Clock Section -->
-    <section class="love-clock" id="love-clock">
+   <section class="love-clock" id="love-clock">
         <div class="container">
-            <h2 class="section-title cursive scroll-hidden">Our Time Together</h2>
+            <h2 class="section-title cursive">Our Time Together</h2>
+            
+            <!-- Couple Profile -->
+            <div class="couple-profile">
+                <div class="partner partner-1">
+                    <img src="https://stickershop.line-scdn.net/stickershop/v1/product/7914908/LINEStorePC/main.png?v=1" alt="Partner 1" class="partner-image">
+                    <div class="partner-name">Alex</div>
+                </div>
+                
+                <div class="love-symbol">
+                    <div class="love-icon">💕</div>
+                    <div class="love-text">Love</div>
+                </div>
+                
+                <div class="partner partner-2">
+                    <img src="https://img.pikbest.com/png-images/20240927/lovely-kawaii-girl-sticker_10891869.png!sw800" alt="Partner 2" class="partner-image">
+                    <div class="partner-name">Taylor</div>
+                </div>
+            </div>
+            
+            <!-- Time Counter -->
             <div class="clock-container">
-                <div class="time-unit scroll-hidden">
+                <div class="time-unit">
                     <div class="time-value" id="days">365</div>
                     <div class="time-label">Days</div>
                 </div>
-                <div class="time-unit scroll-hidden">
+                <div class="time-unit">
                     <div class="time-value" id="hours">00</div>
                     <div class="time-label">Hours</div>
                 </div>
-                <div class="time-unit scroll-hidden">
+                <div class="time-unit">
                     <div class="time-value" id="minutes">00</div>
                     <div class="time-label">Minutes</div>
                 </div>
-                <div class="time-unit scroll-hidden">
+                <div class="time-unit">
                     <div class="time-value" id="seconds">00</div>
                     <div class="time-label">Seconds</div>
                 </div>
             </div>
-            <div class="time-summary scroll-hidden" id="time-summary">
+            
+            <div class="time-summary" id="time-summary">
                 <!-- Will be populated by JavaScript -->
             </div>
         </div>
         
         <!-- Floating Elements -->
         <div class="floating heart" style="top: 30%; left: 10%;">💘</div>
-        <div class="floating heart" style="top: 70%; left: 85%;">💘</div>
         <div class="floating balloon" style="top: 20%; left: 80%; background: var(--light-purple);"></div>
+        <div class="floating balloon" style="top: 40%; left: 15%; background: var(--pink);"></div>
+        <div class="floating heart" style="top: 70%; left: 85%;">💘</div>
+        <div class="floating flower" style="top: 15%; left: 90%;">🌸</div>
         <div class="floating confetti" style="top: 60%; left: 15%; background: var(--soft-pink);"></div>
+        <div class="floating flower" style="top: 85%; left: 5%;">🌺</div>
     </section>
 
     <!-- Gift Section -->
@@ -934,7 +1150,7 @@
             audio.play().catch(e => {
                 console.log("Audio play failed:", e);
                 // Show play button if autoplay is blocked
-                document.getElementById('music-toggle').textContent = 'Play Music';
+                document.getElementById('music-toggle').textContent = '🎵   Play Music';
             });
             
             // Music toggle functionality
@@ -944,10 +1160,10 @@
             musicToggle.addEventListener('click', function() {
                 if (isPlaying) {
                     audio.pause();
-                    musicToggle.textContent = 'Play Music';
+                    musicToggle.textContent = '🎵  Play Music';
                 } else {
                     audio.play();
-                    musicToggle.textContent = 'Pause Music';
+                    musicToggle.textContent = '🎵  Pause Music';
                 }
                 isPlaying = !isPlaying;
             });
@@ -1050,9 +1266,9 @@
                 });
                 
                 if (isCorrect) {
+                    startFireworks();
                     gameResult.textContent = "Correct! You know us so well! 💖";
                     gameResult.style.color = "#4CAF50";
-                    createConfetti();
                 } else {
                     gameResult.textContent = "Not quite right, but that's okay! 💕";
                     gameResult.style.color = "#f44336";
@@ -1138,26 +1354,6 @@
             }
         }
 
-        // Confetti Effect for Game
-        function createConfetti() {
-            const section = document.getElementById('game');
-            const confettiCount = 100;
-            
-            for (let i = 0; i < confettiCount; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + '%';
-                confetti.style.top = Math.random() * 100 + '%';
-                confetti.style.background = getRandomColor();
-                confetti.style.animationDelay = Math.random() * 5 + 's';
-                section.appendChild(confetti);
-                
-                // Remove confetti after animation
-                setTimeout(() => {
-                    confetti.remove();
-                }, 5000);
-            }
-        }
         
         // Helper function for random colors
         function getRandomColor() {
