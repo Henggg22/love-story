@@ -1,0 +1,540 @@
+/* --- Customization Variables --- */
+:root {
+    /* Light Mode Colors */
+    --c-bg-start-light: #FFC0CB;    /* Pastel Pink */
+    --c-bg-end-light: #FFFDD0;      /* Cream White */
+    --c-primary-light: #cc527a;     /* Deep Pink */
+    --c-secondary-light: #E6E6FA;   /* Lavender */
+    --c-text-light: #505050;
+    --c-card-light: white;
+    --c-glow-light: #ff69b4;        /* Hot Pink Glow */
+    --c-particle-light: #ff69b4; /* Default particle color */
+    
+    /* Dark Mode Colors */
+    --c-bg-start-dark: #1f081c;     /* Deep Violet */
+    --c-bg-end-dark: #2c0b2f;       /* Dark Purple */
+    --c-primary-dark: #ff69b4;      /* Hot Pink */
+    --c-secondary-dark: #3a1b42;    /* Dark Lavender */
+    --c-text-dark: #f0f0f0;
+    --c-card-dark: #3a1b42;
+    --c-glow-dark: #ffc0cb;         /* Soft Pink Glow */
+    --c-particle-dark: #ffc0cb; /* Default particle color */
+
+
+    /* Active Theme Variables - Default to Light */
+    --c-bg-start: var(--c-bg-start-light);
+    --c-bg-end: var(--c-bg-end-light);
+    --c-primary: var(--c-primary-light);
+    --c-secondary: var(--c-secondary-light);
+    --c-text: var(--c-text-light);
+    --c-card: var(--c-card-light);
+    --c-glow: var(--c-glow-light);
+    --c-particle: var(--c-particle-light);
+
+    /* Typography */
+    --font-cursive: 'Dancing Script', cursive;
+    --font-sans: 'Quicksand', sans-serif;
+}
+
+/* --- Dark Mode Override --- */
+body[data-theme="dark"] {
+    --c-bg-start: var(--c-bg-start-dark);
+    --c-bg-end: var(--c-bg-end-dark);
+    --c-primary: var(--c-primary-dark);
+    --c-secondary: var(--c-secondary-dark);
+    --c-text: var(--c-text-dark);
+    --c-card: var(--c-card-dark);
+    --c-glow: var(--c-glow-dark);
+    --c-particle: var(--c-particle-dark);
+}
+
+/* --- Global Styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--c-text);
+    background: linear-gradient(180deg, var(--c-bg-start) 0%, var(--c-bg-end) 100%);
+    scroll-behavior: smooth;
+    transition: background 0.8s ease, color 0.8s ease;
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-sans);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+section {
+    padding: 80px 5%;
+    min-height: 80vh;
+    position: relative; /* Crucial for section-specific particles */
+    z-index: 1;
+    transition: background-color 0.8s ease;
+    overflow: hidden; /* Ensures particles don't spill out too much */
+}
+
+.section-title {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--c-primary);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Theme Toggle Button --- */
+.theme-toggle-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--c-card);
+    color: var(--c-primary);
+    border: 2px solid var(--c-primary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2em;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+.theme-toggle-btn:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* --- Intro Section --- */
+.hero-section {
+    background: linear-gradient(135deg, var(--c-bg-start) 0%, var(--c-secondary) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    color: white;
+}
+
+.hero-content h1 {
+    font-family: var(--font-cursive);
+    font-size: 6em;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.intro-couple-img {
+    width: 250px;
+    height: 250px;
+    background-color: var(--c-card);
+    border-radius: 50%;
+    margin: 40px auto 0;
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.3), 0 10px 30px rgba(0, 0, 0, 0.3);
+    background-image: url('https://via.placeholder.com/250x250?text=Couple+Photo'); /* Customization point */
+    background-size: cover;
+    background-position: center;
+}
+
+/* --- Day Count Section --- */
+.day-count-section {
+    background-color: var(--c-bg-end);
+    text-align: center;
+    padding: 100px 5%;
+}
+
+.counter-box {
+    margin: 40px auto;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.time-unit {
+    background: var(--c-secondary);
+    padding: 20px 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    min-width: 120px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.time-unit:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px var(--c-glow);
+}
+
+.number {
+    font-size: 3em;
+    font-weight: 700;
+    display: block;
+    color: var(--c-primary);
+    line-height: 1.2;
+}
+.time-unit p {
+    font-size: 1em;
+    font-weight: 600;
+    color: var(--c-text);
+    opacity: 0.8;
+}
+
+.start-date-info {
+    margin-top: 20px;
+    font-size: 1.1em;
+}
+
+/* --- Timeline Section (Reusing previous layout, enhancing cards) --- */
+.timeline-section {
+    background-color: var(--c-card);
+}
+.timeline-content {
+    background-color: var(--c-secondary);
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+/* Hover Glow Effect for Cards */
+.card-hover-glow:hover {
+    box-shadow: 0 0 20px var(--c-glow), 0 5px 25px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+}
+
+/* --- Image Album Section --- */
+.album-section {
+    background-color: var(--c-secondary);
+}
+
+.photo-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.polaroid {
+    background: var(--c-card);
+    padding: 15px 15px 40px 15px;
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    opacity: 0;
+    transform: scale(0.8) rotate(var(--rotation));
+}
+
+/* Zoom Hover Animation */
+.zoom-hover:hover {
+    transform: rotate(0deg) scale(1.1);
+    box-shadow: 0 10px 30px var(--c-glow);
+    z-index: 10;
+}
+
+.photo-placeholder {
+    width: 250px;
+    height: 250px;
+    background-color: var(--c-bg-end);
+    background-size: cover;
+    background-position: center;
+    border: 3px solid var(--c-secondary);
+}
+/* Customization point for image URLs */
+.photo-1 { background-image: url('https://via.placeholder.com/250x250?text=Photo+1'); }
+.photo-2 { background-image: url('https://via.placeholder.com/250x250?text=Photo+2'); }
+.photo-3 { background-image: url('https://via.placeholder.com/250x250?text=Photo+3'); }
+.photo-4 { background-image: url('https://via.placeholder.com/250x250?text=Photo+4'); }
+
+
+/* --- Lightbox Styles --- */
+.lightbox {
+    position: fixed;
+    z-index: 2000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    transition: opacity 0.3s ease;
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    animation: zoom 0.6s;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.close-btn:hover {
+    color: var(--c-glow);
+}
+@keyframes zoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+
+/* --- Memories Section --- */
+.memories-section {
+    background-color: var(--c-bg-end);
+    padding: 100px 5%;
+}
+
+.memory-item {
+    transition: opacity 0.8s, transform 0.8s;
+}
+.memory-item.slide-in-left { transform: translateX(-50px); opacity: 0; }
+.memory-item.slide-in-right { transform: translateX(50px); opacity: 0; }
+
+.memory-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cursive-quote {
+    font-family: var(--font-cursive);
+    font-size: 2.2em;
+    font-weight: 700;
+    flex-grow: 1;
+    color: var(--c-primary);
+    text-align: center;
+}
+
+.illustration-placeholder {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: var(--c-primary);
+    flex-shrink: 0;
+    margin: 0 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background-image: url('https://via.placeholder.com/150x150?text=Cute+Cartoon'); /* Customization point */
+    background-size: cover;
+    background-position: center;
+}
+
+/* --- Celebration Section --- */
+.celebration-section {
+    background: var(--c-bg-start-dark); /* Dark for a night sky effect */
+    background-image: radial-gradient(circle at 15% 50%, rgba(255, 105, 180, 0.1), transparent), 
+                      radial-gradient(circle at 85% 50%, rgba(230, 230, 250, 0.1), transparent);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.glowing-anniversary-text {
+    font-family: var(--font-cursive);
+    font-size: 4.5em;
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* --- Animation Utilities --- */
+/* Global Glow */
+.glow-text {
+    text-shadow: 0 0 10px var(--c-glow), 0 0 20px var(--c-glow), 0 0 30px rgba(255, 105, 180, 0.4);
+    animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.9; }
+    100% { opacity: 1; text-shadow: 0 0 15px var(--c-glow), 0 0 25px var(--c-glow); }
+}
+
+/* Pulse Hover for Numbers */
+.pulse-hover:hover {
+    animation: number-pulse 0.8s forwards;
+}
+@keyframes number-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); color: var(--c-glow); }
+    100% { transform: scale(1); }
+}
+
+/* Initial Fade-In/Slide-Up for Sections */
+.fade-in {
+    opacity: 0;
+    transition: opacity 1s, transform 1s;
+    transform: translateY(20px);
+}
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Particle System Base Styles (for JS generated elements) --- */
+.floating-particle {
+    position: absolute;
+    pointer-events: none;
+    z-index: 2;
+    will-change: transform, opacity; /* Optimize animation performance */
+}
+
+/* Specific Particle Styles */
+.particle-heart {
+    font-size: 1.5em; /* Initial size */
+    color: var(--c-particle); /* Uses theme color for hearts */
+    animation: float-up-heart var(--duration) linear infinite;
+}
+
+.particle-petal {
+    font-size: 1.2em;
+    color: var(--c-primary); /* Pink petals */
+    transform: rotate(var(--rotation));
+    animation: float-up-petal var(--duration) linear infinite;
+}
+
+.particle-balloon {
+    font-size: 2em;
+    color: var(--c-particle);
+    animation: float-up-balloon var(--duration) linear infinite;
+}
+
+.particle-sparkle, .particle-star {
+    font-size: 1em;
+    color: gold; /* Consistent sparkle color */
+    animation: float-up-star var(--duration) linear infinite, twinkle 2s infinite alternate;
+}
+
+.particle-confetti {
+    width: var(--size);
+    height: var(--size);
+    background-color: var(--color);
+    border-radius: var(--border-radius);
+    transform: rotate(var(--rotation));
+    animation: fall-confetti var(--duration) linear infinite;
+}
+
+.particle-snow {
+    background-color: white;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: snowfall var(--duration) linear infinite;
+}
+
+
+/* --- Particle Keyframe Animations --- */
+@keyframes float-up-heart {
+    0% { transform: translateY(100vh) scale(0.5) rotate(0deg); opacity: 0; }
+    20% { opacity: 0.8; }
+    100% { transform: translateY(-10vh) scale(1.2) rotate(360deg); opacity: 0; }
+}
+@keyframes float-up-petal {
+    0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
+    20% { opacity: 0.7; }
+    100% { transform: translateY(-10vh) translateX(var(--x-offset)) rotate(720deg); opacity: 0; } /* x-offset for gentle sway */
+}
+@keyframes float-up-balloon {
+    0% { transform: translateY(100vh) scale(0.6); opacity: 0; }
+    20% { opacity: 0.9; }
+    100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+}
+@keyframes float-up-star {
+    0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+@keyframes twinkle {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes fall-confetti {
+    0% { transform: translateY(-10%) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes snowfall {
+    0% { transform: translateY(-10vh) translateX(0px); opacity: 0; }
+    10% { opacity: 0.7; }
+    100% { transform: translateY(100vh) translateX(var(--x-offset)); opacity: 0; }
+}
+
+
+/* --- Fireworks (CSS-only simplified, JS will enhance) --- */
+#fireworks-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+/* A single, repeating CSS firework burst (JS will add more variety) */
+#fireworks-container::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    animation: firework-trail 1.5s ease-out forwards;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    opacity: 0;
+}
+
+@keyframes firework-trail {
+    0% { transform: translateX(-50%) translateY(0); opacity: 0; }
+    20% { transform: translateX(-50%) translateY(-20vh); opacity: 1; }
+    80% { transform: translateX(-50%) translateY(-80vh); opacity: 1; width: 4px; height: 4px; }
+    100% { transform: translateX(-50%) translateY(-90vh); opacity: 0; width: 30px; height: 30px; background: radial-gradient(circle, #ff69b4 0%, #ffc0cb 50%, transparent 70%); }
+}
+
+
+/* --- Mobile Responsiveness --- */
+@media screen and (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 4em;
+    }
+    .counter-box {
+        gap: 15px;
+    }
+    .time-unit {
+        min-width: 100px;
+        padding: 15px 10px;
+    }
+    .number {
+        font-size: 2em;
+    }
+    /* Timeline adjustments from previous concept */
+    .timeline::after { left: 20px; }
+    .timeline-item { width: 100%; padding-left: 50px; padding-right: 10px; left: 0 !important; transform: translateX(0) !important; }
+    .timeline-content { margin-left: 0; }
+    .timeline-icon { left: 20px; margin-left: -20px; right: auto; }
+    
+    .photo-placeholder {
+        width: 150px;
+        height: 150px;
+    }
+    .polaroid {
+        transform: rotate(0deg) !important; /* disable random rotation on mobile */
+    }
+    .glowing-anniversary-text {
+        font-size: 3em;
+    }
+}

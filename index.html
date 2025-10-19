@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Story - Anniversary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-purple: #2d1b69;
+            --purple: #5d3fd3;
+            --pink: #ff6b9d;
+            --soft-pink: #ffa8c9;
+            --light-purple: #9d7eff;
+            --dark-bg: #0f0b23;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glow: 0 0 10px rgba(157, 126, 255, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--dark-bg);
+            color: white;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+        }
+
+        .cursive {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        section {
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Scroll Animation Classes */
+        .scroll-hidden {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .scroll-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--deep-purple) 0%, var(--dark-bg) 100%);
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px var(--pink), 0 0 40px var(--light-purple);
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px var(--pink), 0 0 20px var(--light-purple);
+            }
+            to {
+                text-shadow: 0 0 20px var(--pink), 0 0 40px var(--light-purple), 0 0 60px var(--light-purple);
+            }
+        }
+
+        /* Timeline Section */
+        .timeline {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--deep-purple) 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 60px;
+            text-shadow: var(--glow);
+        }
+
+        .timeline-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--light-purple);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 10px;
+        }
+
+        .timeline-card {
+            padding: 20px 30px;
+            position: relative;
+            background-color: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            width: 45%;
+            margin-bottom: 50px;
+            box-shadow: var(--glow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px rgba(157, 126, 255, 0.8);
+        }
+
+        .timeline-card.left {
+            left: 0;
+        }
+
+        .timeline-card.right {
+            left: 55%;
+        }
+
+        .timeline-card::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: var(--pink);
+            border: 4px solid var(--light-purple);
+            top: 30px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-card.right::after {
+            left: -17px;
+        }
+
+        .timeline-card .date {
+            color: var(--soft-pink);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: linear-gradient(135deg, var(--deep-purple) 0%, var(--dark-bg) 100%);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .polaroid {
+            background: white;
+            padding: 15px 15px 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: rotate(2deg);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .polaroid:nth-child(even) {
+            transform: rotate(-2deg);
+        }
+
+        .polaroid:hover {
+            transform: rotate(0) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        /* Memories Section */
+        .memories {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--deep-purple) 100%);
+        }
+
+        .memories-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .memory-card {
+            background-color: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--glow);
+            transition: transform 0.3s ease;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .memory-card .quote {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Love Clock Section */
+        .love-clock {
+            background: linear-gradient(135deg, var(--deep-purple) 0%, var(--dark-bg) 100%);
+            text-align: center;
+        }
+
+        .clock-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .time-unit {
+            background-color: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            min-width: 120px;
+            box-shadow: var(--glow);
+            transition: transform 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .time-unit:hover {
+            transform: scale(1.1);
+        }
+
+        .time-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--soft-pink);
+        }
+
+        .time-label {
+            font-size: 1rem;
+            color: var(--light-purple);
+            margin-top: 10px;
+        }
+
+        .time-summary {
+            font-size: 1.5rem;
+            margin-top: 30px;
+            color: var(--soft-pink);
+            font-weight: 600;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 10px rgba(157, 126, 255, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(157, 126, 255, 0.8);
+            }
+            100% {
+                box-shadow: 0 0 10px rgba(157, 126, 255, 0.5);
+            }
+        }
+
+         /* Gift Section */
+        .gift-section {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--deep-purple) 100%);
+            text-align: center;
+        }
+
+        .gift-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gift-box {
+            width: 200px;
+            height: 200px;
+            background: var(--pink);
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.5s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+            animation: shake 3s ease-in-out infinite;
+        }
+
+        .gift-box:hover {
+            transform: scale(1.05);
+            animation: none;
+        }
+
+        .gift-box::before {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 200px;
+            background: var(--soft-pink);
+            left: 80px;
+        }
+
+        .gift-box::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 40px;
+            background: var(--soft-pink);
+            top: 80px;
+        }
+
+        .gift-lid {
+            width: 220px;
+            height: 40px;
+            background: var(--soft-pink);
+            border-radius: 10px 10px 0 0;
+            position: absolute;
+            top: -40px;
+            left: -10px;
+            transition: transform 0.5s ease;
+        }
+
+        .gift-box.open .gift-lid {
+            transform: rotate(-15deg) translate(-30px, -30px);
+        }
+
+        .gift-content {
+            display: none;
+            margin-top: 30px;
+            animation: fadeIn 1s ease;
+        }
+
+        .gift-box.open + .gift-content {
+            display: block;
+        }
+
+        .gift-item {
+            font-size: 2rem;
+            margin: 10px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(2deg); }
+            75% { transform: rotate(-2deg); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Game Section */
+        .game-section {
+            background: linear-gradient(135deg, var(--deep-purple) 0%, var(--dark-bg) 100%);
+            text-align: center;
+        }
+
+        .game-container {
+            background-color: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: var(--glow);
+        }
+
+        .question {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .option {
+            background: var(--purple);
+            border: none;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .option:hover {
+            background: var(--pink);
+            transform: translateY(-5px);
+        }
+
+        .option.correct {
+            background: #4CAF50;
+        }
+
+        .option.incorrect {
+            background: #f44336;
+        }
+
+        .game-result {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            min-height: 50px;
+        }
+
+
+        /* Celebration Section */
+        .celebration {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--deep-purple) 100%);
+        }
+
+        .celebration h2 {
+            font-size: 4rem;
+            text-shadow: 0 0 20px var(--pink), 0 0 40px var(--light-purple);
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        /* Floating Elements */
+        .floating {
+            position: absolute;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .heart {
+            color: var(--pink);
+            font-size: 20px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .balloon {
+            width: 40px;
+            height: 50px;
+            border-radius: 50%;
+            position: relative;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 15px;
+            background-color: white;
+        }
+
+        .flower {
+            font-size: 24px;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .confetti {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .snowflake {
+            font-size: 18px;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            animation: pulseCircle 8s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+
+        @keyframes pulseCircle {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.6;
+            }
+        }
+
+         /* Video Section */
+        .video-section {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--deep-purple) 100%);
+            text-align: center;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--glow);
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+
+        /* Fireworks */
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--pink);
+            animation: fireworkLaunch 1.5s ease-out forwards;
+            z-index: 3;
+        }
+
+        .firework-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: fireworkExplode 1s ease-out forwards;
+            z-index: 3;
+        }
+
+        @keyframes fireworkLaunch {
+            0% {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(var(--explode-y));
+                opacity: 1;
+            }
+        }
+
+        @keyframes fireworkExplode {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+                width: 4px;
+                height: 4px;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty));
+                opacity: 0;
+                width: 2px;
+                height: 2px;
+            }
+        }
+
+        /* Background Animations */
+        .winter-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .flower-bloom {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0;
+            animation: bloom 15s infinite ease-in-out;
+        }
+
+        @keyframes bloom {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0.5) rotate(0deg);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1) rotate(180deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .timeline-container::after {
+                left: 31px;
+            }
+            
+            .timeline-card {
+                width: 85%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-card.right {
+                left: 0;
+            }
+            
+            .timeline-card::after {
+                left: 18px;
+            }
+            
+            .timeline-card.right::after {
+                left: 18px;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .celebration h2 {
+                font-size: 2.5rem;
+            }
+            
+            .options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero" id="celebration">
+        <div class="container">
+            <h1 class="cursive scroll-hidden">Our Love Story ❤️</h1>
+            <p class="scroll-hidden">Celebrating one year of laughter, adventures, and endless love</p>
+            <button id="music-toggle" class="scroll-hidden" style="background: var(--purple); color: white; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer; font-size: 1rem; margin-top: 20px;">Pause Music</button>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="floating heart" style="top: 15%; left: 20%;">💖</div>
+        <div class="floating heart" style="top: 25%; left: 70%;">💖</div>
+        <div class="floating heart" style="top: 60%; left: 10%;">💖</div>
+        <div class="floating heart" style="top: 75%; left: 80%;">💖</div>
+        <!-- <div class="floating balloon" style="top: 10%; left: 5%; background: var(--pink);"></div>
+        <div class="floating balloon" style="top: 40%; left: 90%; background: var(--light-purple);"></div> -->
+        <div class="floating flower" style="top: 30%; left: 40%;">🌸</div>
+        <div class="floating flower" style="top: 70%; left: 60%;">🌺</div>
+        <!-- <div class="floating confetti" style="top: 20%; left: 50%; background: var(--soft-pink);"></div>
+        <div class="floating confetti" style="top: 50%; left: 30%; background: var(--light-purple);"></div> -->
+        <div class="floating snowflake" style="top: 80%; left: 40%;">❄️</div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline" id="timeline">
+        <div class="container">
+            <h2 class="section-title cursive scroll-hidden">Our Journey</h2>
+            <div class="timeline-container">
+                <div class="timeline-card left scroll-hidden">
+                    <div class="date">June 15, 2023</div>
+                    <h3>Our First Meeting</h3>
+                    <p>That magical day when our eyes met across the room and our hearts knew this was something special.</p>
+                </div>
+                <div class="timeline-card right scroll-hidden">
+                    <div class="date">July 20, 2023</div>
+                    <h3>First Date</h3>
+                    <p>Dinner under the stars, laughter that lasted for hours, and the beginning of our beautiful story.</p>
+                </div>
+                <div class="timeline-card left scroll-hidden">
+                    <div class="date">September 5, 2023</div>
+                    <h3>Becoming Official</h3>
+                    <p>The day we made it official and promised to walk this journey of life together.</p>
+                </div>
+                <div class="timeline-card right scroll-hidden">
+                    <div class="date">December 25, 2023</div>
+                    <h3>First Christmas Together</h3>
+                    <p>Sharing traditions, creating new ones, and feeling the magic of the season with you by my side.</p>
+                </div>
+                <div class="timeline-card left scroll-hidden">
+                    <div class="date">Today</div>
+                    <h3>One Year Together</h3>
+                    <p>365 days of love, growth, and building a life together. Here's to many more!</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="floating heart" style="top: 10%; left: 5%;">💖</div>
+        <div class="floating heart" style="top: 40%; left: 95%;">💖</div>
+        <div class="floating flower" style="top: 70%; left: 10%;">🌷</div>
+        <div class="floating snowflake" style="top: 20%; left: 85%;">❄️</div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title cursive scroll-hidden">Our Memories</h2>
+            <div class="gallery-grid">
+                <div class="polaroid scroll-hidden">
+                    <img src="https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Memory 1">
+                </div>
+                <div class="polaroid scroll-hidden">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Memory 2">
+                </div>
+                <div class="polaroid scroll-hidden">
+                    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Memory 3">
+                </div>
+                <div class="polaroid scroll-hidden">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Memory 4">
+                </div>
+                <div class="polaroid scroll-hidden">
+                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Memory 5">
+                </div>
+                <div class="polaroid scroll-hidden">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Memory 6">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="floating heart" style="top: 15%; left: 90%;">💕</div>
+        <div class="floating balloon" style="top: 80%; left: 5%; background: var(--soft-pink);"></div>
+        <div class="floating confetti" style="top: 30%; left: 10%; background: var(--light-purple);"></div>
+    </section>
+
+    <!-- Memories Section -->
+    <section class="memories" id="memories">
+        <div class="container">
+            <h2 class="section-title cursive scroll-hidden">Sweet Moments</h2>
+            <div class="memories-container">
+                <div class="memory-card scroll-hidden">
+                    <p class="quote">"You are my today and all of my tomorrows."</p>
+                    <p>- Our first movie night</p>
+                </div>
+                <div class="memory-card scroll-hidden">
+                    <p class="quote">"In your smile, I see something more beautiful than the stars."</p>
+                    <p>- Stargazing at the lake</p>
+                </div>
+                <div class="memory-card scroll-hidden">
+                    <p class="quote">"I love you not only for what you are but for what I am when I am with you."</p>
+                    <p>- That rainy Sunday morning</p>
+                </div>
+                <div class="memory-card scroll-hidden">
+                    <p class="quote">"Every moment with you feels like a beautiful dream come true."</p>
+                    <p>- Our weekend getaway</p>
+                </div>
+                <div class="memory-card scroll-hidden">
+                    <p class="quote">"You're the missing piece I never knew I was looking for."</p>
+                    <p>- Cooking together for the first time</p>
+                </div>
+                <div class="memory-card scroll-hidden">
+                    <p class="quote">"Home isn't a place, it's wherever I'm with you."</p>
+                    <p>- Moving in together</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="floating heart" style="top: 20%; left: 15%;">💗</div>
+        <div class="floating flower" style="top: 60%; left: 90%;">🌼</div>
+        <div class="floating snowflake" style="top: 80%; left: 80%;">❄️</div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section" id="video">
+        <div class="container">
+            <h2 class="section-title cursive scroll-hidden">Our Memories Video</h2>
+            <div class="video-container scroll-hidden">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/UBj9OmRnKh4?si=p98SFxqnvgGpPYTw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Love Clock Section -->
+    <section class="love-clock" id="love-clock">
+        <div class="container">
+            <h2 class="section-title cursive scroll-hidden">Our Time Together</h2>
+            <div class="clock-container">
+                <div class="time-unit scroll-hidden">
+                    <div class="time-value" id="days">365</div>
+                    <div class="time-label">Days</div>
+                </div>
+                <div class="time-unit scroll-hidden">
+                    <div class="time-value" id="hours">00</div>
+                    <div class="time-label">Hours</div>
+                </div>
+                <div class="time-unit scroll-hidden">
+                    <div class="time-value" id="minutes">00</div>
+                    <div class="time-label">Minutes</div>
+                </div>
+                <div class="time-unit scroll-hidden">
+                    <div class="time-value" id="seconds">00</div>
+                    <div class="time-label">Seconds</div>
+                </div>
+            </div>
+            <div class="time-summary scroll-hidden" id="time-summary">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="floating heart" style="top: 30%; left: 10%;">💘</div>
+        <div class="floating heart" style="top: 70%; left: 85%;">💘</div>
+        <div class="floating balloon" style="top: 20%; left: 80%; background: var(--light-purple);"></div>
+        <div class="floating confetti" style="top: 60%; left: 15%; background: var(--soft-pink);"></div>
+    </section>
+
+    <!-- Gift Section -->
+    <section class="gift-section" id="gift">
+        <div class="container">
+            <h2 class="section-title cursive scroll-hidden">Your Special Gift</h2>
+            <div class="gift-container">
+                <div class="gift-box scroll-hidden" id="gift-box">
+                    <div class="gift-lid"></div>
+                </div>
+                <div class="gift-content" id="gift-content">
+                    <h3>For My Love 💝</h3>
+                    <div class="gift-item">💍</div>
+                    <p>A symbol of my endless love and commitment to you</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Section -->
+    <section class="game-section" id="game">
+        <div class="container">
+            <h2 class="section-title cursive scroll-hidden">How Well Do You Know Us?</h2>
+            <div class="game-container scroll-hidden">
+                <div class="question" id="question">Where did we have our first date?</div>
+                <div class="options" id="options">
+                    <button class="option" data-correct="false">At the movies</button>
+                    <button class="option" data-correct="true">Italian restaurant</button>
+                    <button class="option" data-correct="false">Coffee shop</button>
+                    <button class="option" data-correct="false">Beach picnic</button>
+                </div>
+                <div class="game-result" id="game-result"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Celebration Section -->
+    <section class="celebration" id="celebration">
+        <div class="container">
+            <div class="celebration-message scroll-hidden">
+                <h2 class="cursive">Happy 1st Anniversary My Love 💕</h2>
+                <p style="font-size: 1.5rem; margin-top: 30px;">Here's to us and our beautiful journey together!</p>
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="floating heart" style="top: 15%; left: 20%;">💖</div>
+        <div class="floating heart" style="top: 25%; left: 70%;">💖</div>
+        <div class="floating heart" style="top: 60%; left: 10%;">💖</div>
+        <div class="floating heart" style="top: 75%; left: 80%;">💖</div>
+        <div class="floating balloon" style="top: 10%; left: 5%; background: var(--pink);"></div>
+        <div class="floating balloon" style="top: 40%; left: 90%; background: var(--light-purple);"></div>
+        <div class="floating flower" style="top: 30%; left: 40%;">🌸</div>
+        <div class="floating confetti" style="top: 20%; left: 50%; background: var(--soft-pink);"></div>
+        <div class="floating confetti" style="top: 50%; left: 30%; background: var(--light-purple);"></div>
+        <div class="floating flower" style="top: 70%; left: 60%;">🌺</div>
+        <div class="floating snowflake" style="top: 80%; left: 40%;">❄️</div>
+    </section>
+
+    <script>
+        // Auto-play background music
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create and play background music
+            const audio = new Audio('assets/audio/music.mp3');
+            audio.loop = true;
+            audio.volume = 0.5;
+            audio.play().catch(e => {
+                console.log("Audio play failed:", e);
+                // Show play button if autoplay is blocked
+                document.getElementById('music-toggle').textContent = 'Play Music';
+            });
+            
+            // Music toggle functionality
+            const musicToggle = document.getElementById('music-toggle');
+            let isPlaying = true;
+            
+            musicToggle.addEventListener('click', function() {
+                if (isPlaying) {
+                    audio.pause();
+                    musicToggle.textContent = 'Play Music';
+                } else {
+                    audio.play();
+                    musicToggle.textContent = 'Pause Music';
+                }
+                isPlaying = !isPlaying;
+            });
+            
+            // Start fireworks immediately
+            startFireworks();
+            
+            // Continue fireworks with random intervals
+            setInterval(() => {
+                if (Math.random() > 0.3) { // 70% chance to launch fireworks
+                    createFirework();
+                }
+            }, 800);
+            
+            // Special big firework bursts every 5 seconds
+            setInterval(() => {
+                createBigFireworkBurst();
+            }, 5000);
+            
+            // Add background animations to all sections
+            addBackgroundAnimations();
+        });
+
+        // Scroll Animation
+        function checkScroll() {
+            const elements = document.querySelectorAll('.scroll-hidden');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('scroll-visible');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+
+        // Love Clock with Summary
+        function updateLoveClock() {
+            // Set your anniversary date here (year, month-1, day, hour, minute, second)
+            const anniversary = new Date(2023, 5, 15, 18, 0, 0); // June 15, 2023, 6:00 PM
+            
+            const now = new Date();
+            const diff = now - anniversary;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            // Calculate years, months, days
+            const years = Math.floor(days / 365);
+            const months = Math.floor((days % 365) / 30);
+            const remainingDays = days % 30;
+            
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            
+            // Update summary
+            const summary = document.getElementById('time-summary');
+            summary.textContent = `${years} Year${years !== 1 ? 's' : ''}, ${months} Month${months !== 1 ? 's' : ''}, ${remainingDays} Day${remainingDays !== 1 ? 's' : ''}`;
+        }
+        
+        // Update the clock immediately and then every second
+        updateLoveClock();
+        setInterval(updateLoveClock, 1000);
+
+        // Gift Box
+        const giftBox = document.getElementById('gift-box');
+        const giftContent = document.getElementById('gift-content');
+        
+        giftBox.addEventListener('click', function() {
+            this.classList.toggle('open');
+            if (this.classList.contains('open')) {
+                createFireworks();
+            }
+        });
+
+        // Game Logic
+        const options = document.querySelectorAll('.option');
+        const gameResult = document.getElementById('game-result');
+        
+        options.forEach(option => {
+            option.addEventListener('click', function() {
+                const isCorrect = this.getAttribute('data-correct') === 'true';
+                
+                // Disable all options after selection
+                options.forEach(opt => {
+                    opt.disabled = true;
+                    if (opt.getAttribute('data-correct') === 'true') {
+                        opt.classList.add('correct');
+                    } else {
+                        opt.classList.add('incorrect');
+                    }
+                });
+                
+                if (isCorrect) {
+                    gameResult.textContent = "Correct! You know us so well! 💖";
+                    gameResult.style.color = "#4CAF50";
+                    createConfetti();
+                } else {
+                    gameResult.textContent = "Not quite right, but that's okay! 💕";
+                    gameResult.style.color = "#f44336";
+                }
+            });
+        });
+
+        // Fireworks Functions
+        function startFireworks() {
+            // Initial burst of fireworks
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    createFirework();
+                }, i * 300);
+            }
+        }
+
+        function createFirework() {
+            const section = document.getElementById('celebration');
+            
+            // Create firework rocket
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+            
+            // Random position
+            const left = Math.random() * 100;
+            firework.style.left = `${left}%`;
+            
+            // Random explode height (between 20% and 60% from top)
+            const explodeY = 20 + Math.random() * 40;
+            firework.style.setProperty('--explode-y', `${explodeY}vh`);
+            
+            // Random color
+            const colors = ['#ff6b9d', '#9d7eff', '#5d3fd3', '#ffa8c9', '#ffffff', '#ffd700', '#00ffff'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            firework.style.background = color;
+            firework.style.boxShadow = `0 0 10px ${color}`;
+            
+            section.appendChild(firework);
+            
+            // Create explosion after rocket reaches target
+            setTimeout(() => {
+                createExplosion(left, explodeY, color);
+                firework.remove();
+            }, 1500);
+        }
+        
+        function createBigFireworkBurst() {
+            // Create multiple fireworks at once for a big celebration
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createFirework();
+                }, i * 200);
+            }
+        }
+        
+        function createExplosion(x, y, color) {
+            const section = document.getElementById('celebration');
+            const particleCount = 50 + Math.floor(Math.random() * 50);
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'firework-particle';
+                particle.style.left = `${x}%`;
+                particle.style.top = `${y}vh`;
+                particle.style.background = color;
+                
+                // Random direction and distance
+                const angle = Math.random() * Math.PI * 2;
+                const distance = 20 + Math.random() * 80;
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance;
+                
+                particle.style.setProperty('--tx', `${tx}px`);
+                particle.style.setProperty('--ty', `${ty}px`);
+                
+                section.appendChild(particle);
+                
+                // Remove particle after animation
+                setTimeout(() => {
+                    particle.remove();
+                }, 1000);
+            }
+        }
+
+        // Confetti Effect for Game
+        function createConfetti() {
+            const section = document.getElementById('game');
+            const confettiCount = 100;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = Math.random() * 100 + '%';
+                confetti.style.background = getRandomColor();
+                confetti.style.animationDelay = Math.random() * 5 + 's';
+                section.appendChild(confetti);
+                
+                // Remove confetti after animation
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+        
+        // Helper function for random colors
+        function getRandomColor() {
+            const colors = ['#ff6b9d', '#9d7eff', '#5d3fd3', '#ffa8c9'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        // Background Animations
+        function addBackgroundAnimations() {
+            const sections = document.querySelectorAll('section');
+            const flowers = ['🌸', '🌺', '🌷', '🌹', '💐', '🌻'];
+            const winterElements = ['❄️', '⛄', '🌨️'];
+            
+            sections.forEach(section => {
+                // Add circles
+                for (let i = 0; i < 8; i++) {
+                    const circle = document.createElement('div');
+                    circle.className = 'circle';
+                    circle.style.width = (20 + Math.random() * 80) + 'px';
+                    circle.style.height = circle.style.width;
+                    circle.style.left = Math.random() * 100 + '%';
+                    circle.style.top = Math.random() * 100 + '%';
+                    circle.style.animationDelay = (Math.random() * 5) + 's';
+                    circle.style.borderColor = `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.3)`;
+                    section.appendChild(circle);
+                }
+                
+                // Add flowers
+                for (let i = 0; i < 5; i++) {
+                    const flower = document.createElement('div');
+                    flower.className = 'flower-bloom';
+                    flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+                    flower.style.left = Math.random() * 100 + '%';
+                    flower.style.top = Math.random() * 100 + '%';
+                    flower.style.animationDelay = (Math.random() * 15) + 's';
+                    section.appendChild(flower);
+                }
+                
+                // Add more floating elements
+                for (let i = 0; i < 5; i++) {
+                    const element = document.createElement('div');
+                    element.className = 'floating';
+                    
+                    // Random type
+                    const types = ['heart', 'balloon', 'snowflake'];
+                    const type = types[Math.floor(Math.random() * types.length)];
+                    element.classList.add(type);
+                    
+                    if (type === 'heart') {
+                        element.textContent = '💖';
+                    } else if (type === 'balloon') {
+                        element.style.background = getRandomColor();
+                    } else if (type === 'snowflake') {
+                        element.textContent = '❄️';
+                    }
+                    
+                    // Random position
+                    element.style.top = Math.random() * 100 + '%';
+                    element.style.left = Math.random() * 100 + '%';
+                    
+                    // Random animation delay
+                    element.style.animationDelay = (Math.random() * 5) + 's';
+                    
+                    section.appendChild(element);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
